@@ -1,1 +1,1 @@
-worker: python not_copy.py
+worker: python bot.py
