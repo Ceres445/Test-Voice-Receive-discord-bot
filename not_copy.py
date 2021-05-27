@@ -14,7 +14,6 @@ except KeyError:
     load_dotenv()
     load = 0
     print('loaded local dotenv file')
-    postgres = os.environ['POSTGRES']
     token = os.environ['token']
 
 
@@ -150,4 +149,4 @@ class Client(discord.Client):
 
 intents = discord.Intents.default()
 client = Client(intents=intents)
-client.run(os.environ.get('token'))
+client.run(token)
