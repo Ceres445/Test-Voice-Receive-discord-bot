@@ -16,7 +16,7 @@ async def finished_callback(sink, channel, *args):
 
 class TestBot(commands.Bot):
     def __init__(self, *args, **kwargs):
-        super().__init__(command_prefix=kwargs.pop('commands_prefix', ['+']), *args, **kwargs)
+        super().__init__(command_prefix=kwargs.pop('commands_prefix', ['-']), *args, **kwargs)
         self.connections = {voice.guild.id: voice for voice in self.voice_clients}
         self.playlists = {}
 
@@ -27,7 +27,7 @@ class TestBot(commands.Bot):
             return
         await self.process_commands(msg)
 
-    @commands.command()
+    @commands.command(name='start')
     async def start_recording(self, ctx, *, args):
         filters = args_to_filters(args)
         if type(filters) == str:
@@ -39,7 +39,7 @@ class TestBot(commands.Bot):
         vc.start_recording(discord.Sink(encoding=encoding, filters=filters), finished_callback, ctx.channel)
         await ctx.send("The recording has started!")
 
-    @commands.command()
+    @commands.command(name='stop')
     async def stop_recording(self, ctx):
         vc = await self.get_vc(ctx.message)
         vc.stop_recording()
