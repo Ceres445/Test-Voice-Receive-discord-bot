@@ -1,0 +1,1 @@
+worker: python not_copy.py

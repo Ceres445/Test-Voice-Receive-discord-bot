@@ -1,0 +1,3 @@
+git+https://github.com/Sheepposu/discord.py
+python-dotenv==0.17.1
+

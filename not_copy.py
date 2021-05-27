@@ -1,5 +1,21 @@
+import datetime
+
 import discord
 import os
+
+from dotenv import load_dotenv
+
+try:
+    load = 1
+    token = os.environ['token']
+    print("time is ", datetime.datetime.now())
+    print('loaded heroku env variables')
+except KeyError:
+    load_dotenv()
+    load = 0
+    print('loaded local dotenv file')
+    postgres = os.environ['POSTGRES']
+    token = os.environ['token']
 
 
 def vc_required(func):
@@ -134,7 +150,4 @@ class Client(discord.Client):
 
 intents = discord.Intents.default()
 client = Client(intents=intents)
-import dotenv
-
-dotenv.load_dotenv()
 client.run(os.environ.get('token'))
