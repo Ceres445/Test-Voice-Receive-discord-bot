@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 try:
     load = 1
-    token = os.environ['token']
+    token = os.environ['TOKEN']
     print("time is ", datetime.datetime.now())
     print('loaded heroku env variables')
 except KeyError:
